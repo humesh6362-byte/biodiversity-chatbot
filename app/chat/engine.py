@@ -20,6 +20,7 @@ from app.models import (
 )
 from app.chat import session as session_store
 from app.chat.extractor import extract_slots
+from app.config import settings
 from app.knowledge.retriever import retrieve
 
 
@@ -200,7 +201,7 @@ Generate the required JSON response.
 """
 
     response = ollama.chat(
-        model="llama3.2:3b",
+    model=settings.ollama_model,
         messages=[
             {
                 "role": "system",
